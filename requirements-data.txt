@@ -1,0 +1,7 @@
+datasets
+jsonlines
+tqdm
+regex
+unidecode
+pyyaml
+transformers

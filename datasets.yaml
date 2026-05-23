@@ -1,0 +1,62 @@
+# config/datasets.yaml
+# Balanced, course-agnostic mix using open & stable datasets.
+
+datasets:
+  # ----- Dialogue / meeting-like (for Q&A/class discussion behavior) -----
+  - name: "samsum"
+    split: "train"
+    target: 1500
+    kind: "dialogue"
+    domain: "GEN"
+
+  # ----- Multi-document / long-form structure -----
+  - name: "multi_news"
+    split: "train"
+    target: 1500
+    kind: "news"
+    domain: "HUM"
+
+  # ----- Instructional / tutorial tone -----
+  - name: "wikihow"
+    split: "train"
+    target: 1500
+    kind: "howto"
+    domain: "GEN"
+
+  # ----- General news summarization (broad topics) -----
+  - name: "cnn_dailymail"
+    subset: "3.0.0"
+    split: "train"
+    target: 2000
+    kind: "news"
+    domain: "HUM"
+
+  # ----- Academic text summarization (tone for university courses) -----
+  - name: "ccdv/arxiv-summarization"
+    split: "train"
+    target: 1000
+    kind: "paper"
+    domain: "STEM"
+
+  - name: "ccdv/pubmed-summarization"
+    split: "train"
+    target: 1000
+    kind: "paper"
+    domain: "MED"
+
+  # ----- Optional: long technical/government reports (nice extra) -----
+  - name: "ccdv/govreport-summarization"
+    split: "train"
+    target: 500
+    kind: "report"
+    domain: "LAW"
+
+limits:
+  max_input_tokens: 2000
+  min_input_tokens: 200
+  max_output_chars: 1200
+
+splits:
+  train: 0.80
+  val:   0.10
+  test:  0.10

@@ -1,0 +1,19 @@
+cleaning:
+  strip_timestamps: true
+  strip_stage_directions: true
+  min_input_chars: 200
+  min_output_chars: 20
+  deduplicate: true
+
+schema:
+  fields: ["source","domain","input","output"]
+
+balancing:
+  domain_caps:
+    STEM: 0.25
+    MED:  0.15
+    LAW:  0.15
+    BUS:  0.15
+    HUM:  0.20
+    GEN:  0.10
+  fallback_to_global_mix: true

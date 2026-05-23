@@ -1,0 +1,24 @@
+# config/training_peft.yaml
+base_model_id: "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+output_dir: "outputs/peft_lora_fast"
+
+# Shorter sequences = faster
+max_source_tokens: 1024
+max_target_tokens: 192
+
+# Faster training
+learning_rate: 1.5e-4
+epochs: 1
+per_device_train_batch_size: 2   # was 1
+gradient_accumulation_steps: 4   # effective batch = 8
+warmup_ratio: 0.03
+weight_decay: 0.0
+save_strategy: "epoch"
+evaluation_strategy: "no"        # turn off eval for speed
+fp16: false                      # keep false for MPS stability
+
+# LoRA
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+target_modules: ["q_proj","k_proj","v_proj","o_proj"]
